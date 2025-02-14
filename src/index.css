@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes carSlide {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-car-slide {
+  animation: carSlide 20s linear infinite;
+}
+
+.import-index {
+  background-image: url('assets/bg2-cr.jpg');
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+}
+header {
+  width: 100%;
+  height: 70vh; /* Makes the header cover the entire section */
+  background-size: cover; /* Make sure the header background image is stretched */
+  background-position: center center; /* Center the image in the header */
+  background-repeat: no-repeat; /* Prevent image repetition */
+}
+
+/* ========================================================== */
+/* Centering the buttons */
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center; 
+  height: 10px; 
+  position: relative;
+  z-index: 10;
+  /* margin-top: -150px; */
+}
+
+.loginForum {
+  margin-top: -500;
+}
+
+/* Styling the buttons */
+
+#btn {
+  background-color: #11355baf; 
+  color: white; 
+  font-size: 18px;
+  padding: 12px 24px;
+  margin: 10px 0; 
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  max-width: 400px; 
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .vehicle-services {
+    font-size: 16px;
+    padding: 10px 20px;
+    width: 90%;
+  }
+}
+
+/* Dark mode transitions */
+.dark body {
+  background-color: #111827;
+  color: #fff;
+}
+
+body {
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Ensure smooth transitions for theme changes */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Add this if it's not already present */
+:root {
+  color-scheme: light dark;
+}
+
+.button-container #btn:hover {
+  background-color: #0c3a6bb8;
+  transition: background-color 0.3s ease;
+}
+
+/* ========================================================== */
+.felementser {
+  background-image: url('assets/bg2-ser.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
