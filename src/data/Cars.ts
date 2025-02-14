@@ -50,11 +50,3 @@ export const cars: Car[] = [
     condition: 'New'
   },
 ];
-
-// Define and export useCarStore
-export const useCarStore = () => {
-  return {
-    cars, // Return the cars array or any other data
-    // Add other functions or state as needed
-  };
-};

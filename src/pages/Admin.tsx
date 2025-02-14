@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PlusCircle, Edit, Trash2, X } from 'lucide-react';
-import { useCarStore } from '../data/cars';
+import { useCarStore } from '../data/Cars';
 import type { Car } from '../types';
 
 export const Admin: React.FC = () => {
