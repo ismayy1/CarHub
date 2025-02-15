@@ -36,13 +36,10 @@ function App() {
             <Route 
               path="/" 
               element={
-
-                <ProtectedRoute>
+                <>
                   <Header />
                   <Home />
-                </ProtectedRoute>
-
-                // <Home />
+                </>
               } 
             />
             <Route path="/car/:id" element={<CarDetails />} />
@@ -68,27 +65,27 @@ function App() {
             <Route
               path="/statistics"
               element={
-                <ProtectedRoute>
+                <>
                   <StatisticsHeader />
                   <Statistics />
-                </ProtectedRoute>
+                </>
               }
             />
             <Route
               path="/services"
               element={
-                <ProtectedRoute>
+                <>
                   <ServicesHeader />
                   <Services />
-                </ProtectedRoute>
+                </>
               }
             />
             <Route
               path="/service/:id"
               element={
-                <ProtectedRoute>
+                <>
                   <ServiceDetails />
-                </ProtectedRoute>
+                </>
               }
             />
           </Routes>

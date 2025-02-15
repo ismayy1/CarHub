@@ -34,6 +34,11 @@ export const ServicesHeader: React.FC = () => {
     });
   };
 
+  const handleSignOut = () => {
+    localStorage.removeItem('user');
+    window.location.reload();
+  };
+
   return (
     <>
       <nav className="fixed w-full top-0 z-50 px-4 py-4 flex justify-between items-center bg-[rgba(255,255,255,0.568)] dark:bg-black/40 backdrop-blur-sm">
@@ -42,35 +47,35 @@ export const ServicesHeader: React.FC = () => {
             <span className="text-black dark:text-[#eff1f3d7]">Car-Hub</span>
           </RouterLink>
           <div className="flex items-center gap-4">
-            {user ? (
+            <RouterLink
+              to="/"
+              className={`flex items-center gap-2 px-4 py-2 rounded-md hover:bg-[#11355baf] dark:hover:bg-[#11355baf] transition-colors text-black dark:text-[#eff1f3d7] ${
+                location.pathname === '/' ? 'bg-[#11355baf]' : ''
+              }`}
+            >
+              <CarIcon size={20} />
+              <span>Cars</span>
+            </RouterLink>
+            <RouterLink
+              to="/services"
+              className={`flex items-center gap-2 px-4 py-2 rounded-md hover:bg-[#11355baf] dark:hover:bg-[#11355baf] transition-colors text-black dark:text-[#eff1f3d7] ${
+                location.pathname === '/services' ? 'bg-[#11355baf]' : ''
+              }`}
+            >
+              <Settings size={20} />
+              <span>Services</span>
+            </RouterLink>
+            <RouterLink
+              to="/statistics"
+              className={`flex items-center gap-2 px-4 py-2 rounded-md hover:bg-[#11355baf] dark:hover:bg-[#11355baf] transition-colors text-black dark:text-[#eff1f3d7] ${
+                location.pathname === '/statistics' ? 'bg-[#11355baf]' : ''
+              }`}
+            >
+              <BarChart2 size={20} />
+              <span>Statistics</span>
+            </RouterLink>
+            {user && (
               <>
-                <RouterLink
-                  to="/"
-                  className={`flex items-center gap-2 px-4 py-2 rounded-md hover:bg-[#11355baf] dark:hover:bg-[#11355baf] transition-colors text-black dark:text-[#eff1f3d7] ${
-                    location.pathname === '/' ? 'bg-[#11355baf]' : ''
-                  }`}
-                >
-                  <CarIcon size={20} />
-                  <span>Cars</span>
-                </RouterLink>
-                <RouterLink
-                  to="/services"
-                  className={`flex items-center gap-2 px-4 py-2 rounded-md hover:bg-[#11355baf] dark:hover:bg-[#11355baf] transition-colors text-black dark:text-[#eff1f3d7] ${
-                    location.pathname === '/services' ? 'bg-[#11355baf]' : ''
-                  }`}
-                >
-                  <Settings size={20} />
-                  <span>Services</span>
-                </RouterLink>
-                <RouterLink
-                  to="/statistics"
-                  className={`flex items-center gap-2 px-4 py-2 rounded-md hover:bg-[#11355baf] dark:hover:bg-[#11355baf] transition-colors text-black dark:text-[#eff1f3d7] ${
-                    location.pathname === '/statistics' ? 'bg-[#11355baf]' : ''
-                  }`}
-                >
-                  <BarChart2 size={20} />
-                  <span>Statistics</span>
-                </RouterLink>
                 <RouterLink
                   to="/admin"
                   className={`flex items-center gap-2 px-4 py-2 rounded-md hover:bg-[#11355baf] dark:hover:bg-[#11355baf] transition-colors text-black dark:text-[#eff1f3d7] ${
@@ -80,8 +85,16 @@ export const ServicesHeader: React.FC = () => {
                   <User size={20} />
                   <span>Admin</span>
                 </RouterLink>
+                <button
+                  onClick={handleSignOut}
+                  className="flex items-center gap-2 px-4 py-2 rounded-md hover:bg-red-500/20 transition-colors text-red-600 dark:text-red-400"
+                >
+                  <User size={20} />
+                  <span>Sign Out</span>
+                </button>
               </>
-            ) : (
+            )}
+            {!user && (
               <RouterLink
                 to="/register"
                 className="flex items-center gap-2 hover:text-blue-200 transition-colors text-black dark:text-[#eff1f3d7]"
@@ -91,7 +104,6 @@ export const ServicesHeader: React.FC = () => {
                 <span>Register/Login</span>
               </RouterLink>
             )}
-            
           </div>
           
           <div className="ml-4 border-l border-blue-500 dark:border-blue-700 pl-4">

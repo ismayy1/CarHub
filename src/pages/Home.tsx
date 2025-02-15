@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { useCarStore } from '../data/cars';
+import { useCarStore } from '../data/Cars';
 import { CarCard } from '../components/CarCard';
 import { Filters } from '../components/Filters';
 
