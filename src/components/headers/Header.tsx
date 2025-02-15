@@ -122,13 +122,6 @@ export const Header: React.FC = () => {
               >
                 Vehicles
               </button>
-              <button 
-                id='btn' 
-                onClick={handleServicesClick}
-                className="servicesBtn w-[190px] h-[50px] flex items-center justify-center bg-[#11355baf] text-white rounded-lg text-sm transition-all duration-300 ease-in-out hover:bg-[#11355baf]/80"
-              >
-                Our Services
-              </button>
             </div>
           </div>
         </div>

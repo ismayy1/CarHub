@@ -120,14 +120,7 @@ export const AdminHeader: React.FC = () => {
                 onClick={handleVehiclesClick}
                 className="vehicles w-[190px] h-[50px] flex items-center justify-center bg-[#11355baf] text-white rounded-lg text-sm transition-all duration-300 ease-in-out hover:bg-[#11355baf]/80"
               >
-                Vehicles
-              </button>
-              <button 
-                id='btn' 
-                onClick={handleServicesClick}
-                className="servicesBtn w-[190px] h-[50px] flex items-center justify-center bg-[#11355baf] text-white rounded-lg text-sm transition-all duration-300 ease-in-out hover:bg-[#11355baf]/80"
-              >
-                Our Services
+                Dashboard
               </button>
             </div>
           </div>

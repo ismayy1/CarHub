@@ -20,6 +20,7 @@ export const ServicesHeader: React.FC = () => {
   const user = localStorage.getItem('user');
 
   const formRef = useRef<HTMLDivElement>(null);
+  const servicesSectionRef = useRef<HTMLDivElement>(null);
 
   const handleButtonClick = () => {
     if (formRef.current) {
@@ -36,6 +37,13 @@ export const ServicesHeader: React.FC = () => {
 
   const handleServicesClick = () => {
     navigate('/services');
+  };
+
+  const handleExploreServices = () => {
+    window.scrollTo({
+      top: window.innerHeight * 0.65,
+      behavior: 'smooth'
+    });
   };
 
   return (
@@ -106,10 +114,10 @@ export const ServicesHeader: React.FC = () => {
       <header className="mt-[70px]">
         <div className="relative bg-[#11355baf] dark:bg-gradient-to-r dark:from-blue-1100/70 dark:to-blue-950">
           {/* Background Pattern */}
-          <div className="felementser absolute inset-0 opacity-10 dark:opacity-20">
+          <div className="felementser absolute inset-0 ">
             <div className="absolute inset-0" 
                 style={{
-                  backgroundImage: `radial-gradient(circle at 25px 25px, white 2%, transparent 0%)`,
+                  // backgroundImage: `radial-gradient(circle at 25px 25px, white 2%, transparent 0%)`,
                   backgroundSize: '50px 50px'
                 }} />
           </div>
@@ -122,7 +130,7 @@ export const ServicesHeader: React.FC = () => {
                 Our Services
               </h1>
               <p className="mt-6 max-w-2xl mx-auto text-xl text-blue-100 dark:text-blue-200">
-                Delivering exceptional solutions to help your business thrive in the digital age
+                Delivering exceptional solutions to help your business thrive digitally
               </p>
             </div>
 
@@ -141,7 +149,9 @@ export const ServicesHeader: React.FC = () => {
 
             {/* CTA Button */}
             <div className="mt-12 text-center">
-              <button className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-blue-700 dark:text-blue-900 bg-white dark:bg-gray-100 hover:bg-blue-50 dark:hover:bg-gray-200 transition-colors duration-200">
+              <button 
+                onClick={handleExploreServices}
+                className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-blue-700 dark:text-blue-900 bg-white dark:bg-gray-100 hover:bg-blue-50 dark:hover:bg-gray-200 transition-colors duration-200">
                 Explore Our Services
                 <ArrowRight className="ml-2 h-5 w-5" />
               </button>
@@ -150,15 +160,12 @@ export const ServicesHeader: React.FC = () => {
         </div>
       </header>
 
-      <div className="service-first -mt-20 pb-16 bg-white dark:bg-gray-900">
+      <div ref={servicesSectionRef} className="service-first pb-16 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
               Premium Car Services
             </h2>
-            <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
-              Experience top-tier automotive care with our comprehensive service packages
-            </p>
           </div>
           
           <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
