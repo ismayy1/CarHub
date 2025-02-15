@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
-import { ArrowRight, CheckCircle, Link } from 'lucide-react';
+import { ArrowRight, CheckCircle } from 'lucide-react';
 
 import { Car as CarIcon, User, BarChart2, Settings } from 'lucide-react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { ThemeToggle } from '../../contexts/ThemeContext';
 import '../../index.css';
 import { Link as RouterLink } from 'react-router-dom';
@@ -16,7 +16,6 @@ export const StatisticsHeader: React.FC = () => {
 
   
   const location = useLocation();
-  const navigate = useNavigate();
   const user = localStorage.getItem('user');
 
   const formRef = useRef<HTMLDivElement>(null);
@@ -25,17 +24,6 @@ export const StatisticsHeader: React.FC = () => {
     if (formRef.current) {
       formRef.current.scrollIntoView({ behavior: 'smooth' });
     }
-  };
-
-  const handleVehiclesClick = () => {
-    window.scrollTo({
-      top: window.innerHeight,
-      behavior: 'smooth'
-    });
-  };
-
-  const handleServicesClick = () => {
-    navigate('/services');
   };
 
   const handleExploreStatistics = () => {
@@ -128,7 +116,7 @@ export const StatisticsHeader: React.FC = () => {
               <h1 className="text-4xl font-bold tracking-tight text-white dark:text-gray-100 sm:text-5xl lg:text-6xl">
                 Statistics
               </h1>
-              <p className="mt-6 max-w-2xl mx-auto text-xl text-blue-100 dark:text-blue-200">
+              <p className="mt-16 max-w-2xl mx-auto text-xl text-blue-100 dark:text-blue-200">
                 A Statistical Journey into the World of Cars
               </p>
             </div>

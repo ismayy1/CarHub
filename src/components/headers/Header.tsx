@@ -1,12 +1,11 @@
 import React, { useRef } from 'react';
 import { Car as CarIcon, User, BarChart2, Settings } from 'lucide-react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ThemeToggle } from '../../contexts/ThemeContext';
 import '../../index.css';
 
 export const Header: React.FC = () => {
   const location = useLocation();
-  const navigate = useNavigate();
   const user = localStorage.getItem('user');
 
   const formRef = useRef<HTMLDivElement>(null);
@@ -22,10 +21,6 @@ export const Header: React.FC = () => {
       top: window.innerHeight,
       behavior: 'smooth'
     });
-  };
-
-  const handleServicesClick = () => {
-    navigate('/services');
   };
 
   return (
