@@ -7,7 +7,7 @@ import { ThemeToggle } from '../../contexts/ThemeContext';
 import '../../index.css';
 import { Link as RouterLink } from 'react-router-dom';
 
-export const ServicesHeader: React.FC = () => {
+export const StatisticsHeader: React.FC = () => {
   const highlights = [
     { id: 1, text: "Professional Expertise" },
     { id: 2, text: "24/7 Support" },
