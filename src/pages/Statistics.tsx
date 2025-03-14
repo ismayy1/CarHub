@@ -300,6 +300,13 @@ export const Statistics: React.FC = () => {
               />
             </PieChart>
           </div>
+
+          <div>
+            <div>
+              <p></p>
+            </div>
+          </div>
+          
         </div>
       </div>
     </div>

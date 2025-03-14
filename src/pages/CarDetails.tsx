@@ -69,6 +69,7 @@ export const CarDetails: React.FC = () => {
                   <p className={`font-semibold ${isDarkMode ? 'text-gray-200' : 'text-gray-900'}`}>{car.make}</p>
                 </div>
               </div>
+
               <div className="flex items-center gap-2">
                 <Gauge className={`${isDarkMode ? 'text-gray-400' : 'text-gray-400'}`} />
                 <div>
@@ -78,6 +79,7 @@ export const CarDetails: React.FC = () => {
                   </p>
                 </div>
               </div>
+
               <div className="flex items-center gap-2">
                 <Fuel className={`${isDarkMode ? 'text-gray-400' : 'text-gray-400'}`} />
                 <div>
@@ -85,6 +87,7 @@ export const CarDetails: React.FC = () => {
                   <p className={`font-semibold ${isDarkMode ? 'text-gray-200' : 'text-gray-900'}`}>{car.fuelType}</p>
                 </div>
               </div>
+              
               <div className="flex items-center gap-2">
                 <Settings className={`${isDarkMode ? 'text-gray-400' : 'text-gray-400'}`} />
                 <div>

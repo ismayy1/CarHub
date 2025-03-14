@@ -83,6 +83,7 @@ export const ServiceDetails: React.FC = () => {
                     </p>
                   </div>
                 </div>
+
                 <div className="flex items-start gap-3">
                   <Phone className="text-gray-400 dark:text-gray-500 flex-shrink-0" />
                   <div>
@@ -92,6 +93,7 @@ export const ServiceDetails: React.FC = () => {
                     </p>
                   </div>
                 </div>
+                
                 <div className="flex items-start gap-3">
                   <Mail className="text-gray-400 dark:text-gray-500 flex-shrink-0" />
                   <div>
