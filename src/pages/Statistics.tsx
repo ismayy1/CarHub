@@ -11,12 +11,56 @@ import {
   Pie,
   Cell,
 } from 'recharts';
-import { useCarStore } from '../data/cars';
-import { Filter } from 'lucide-react';
+import { useCarStore } from '../data/Cars';
+import { Filter, Star } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 
 const COLORS = ['#2563EB', '#059669', '#D97706', '#DC2626'];
 const DARK_COLORS = ['#60A5FA', '#34D399', '#FBBF24', '#FB923C'];
+
+// Service data from Services page
+const services = [
+  {
+    id: '1',
+    name: 'Full Service',
+    description: 'Complete car check-up and maintenance',
+    rating: 4.8,
+    price: 299,
+    category: 'Maintenance',
+  },
+  {
+    id: '2',
+    name: 'Oil Change',
+    description: 'Premium oil change service',
+    rating: 4.5,
+    price: 79,
+    category: 'Maintenance',
+  },
+  {
+    id: '3',
+    name: 'Brake Service',
+    description: 'Brake pad replacement and system check',
+    rating: 4.7,
+    price: 199,
+    category: 'Repair',
+  },
+  {
+    id: '4',
+    name: 'Tire Rotation',
+    description: 'Tire rotation and balance',
+    rating: 4.3,
+    price: 89,
+    category: 'Maintenance',
+  },
+  {
+    id: '5',
+    name: 'Engine Diagnostics',
+    description: 'Complete engine diagnostic scan',
+    rating: 4.9,
+    price: 149,
+    category: 'Diagnostics',
+  },
+];
 
 export const Statistics: React.FC = () => {
   const { isDarkMode } = useTheme();
@@ -246,7 +290,7 @@ export const Statistics: React.FC = () => {
           </div>
 
           {/* Condition Distribution */}
-          <div className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} p-6 rounded-lg shadow-md`}>
+          <div className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} p-6 rounded-lg shadow-md mt-8`}>
             <h2 className={`text-xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
               New vs Used Distribution
             </h2>
@@ -291,22 +335,34 @@ export const Statistics: React.FC = () => {
                   />
                 ))}
               </Pie>
-              <Tooltip 
-                contentStyle={{ 
-                  backgroundColor: isDarkMode ? '#1F2937' : 'white',
-                  border: `1px solid ${isDarkMode ? '#374151' : '#E5E7EB'}`,
-                  color: isDarkMode ? 'white' : 'black'
-                }}
-              />
             </PieChart>
           </div>
 
-          <div>
-            <div>
-              <p></p>
+          {/* Car Service Ratings */}
+          <div className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} p-6 rounded-lg shadow-md mt-8`}>
+            <div className="flex items-center gap-2 mb-4">
+              <Star size={20} className="text-yellow-500" />
+              <h2 className={`text-xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+                Car Service Ratings
+              </h2>
+            </div>
+            <div className="overflow-x-auto">
+              <BarChart width={500} height={300} data={services}>
+                <CartesianGrid strokeDasharray="3 3" stroke={isDarkMode ? '#374151' : '#e5e7eb'} />
+                <XAxis dataKey="name" stroke={isDarkMode ? '#9CA3AF' : '#4B5563'} />
+                <YAxis stroke={isDarkMode ? '#9CA3AF' : '#4B5563'} domain={[0, 5]} />
+                <Tooltip 
+                  contentStyle={{ 
+                    backgroundColor: isDarkMode ? '#1F2937' : 'white',
+                    border: `1px solid ${isDarkMode ? '#374151' : '#E5E7EB'}`,
+                    color: isDarkMode ? 'white' : 'black'
+                  }}
+                />
+                <Legend />
+                <Bar dataKey="rating" fill={isDarkMode ? '#FBBF24' : '#D97706'} name="Rating" />
+              </BarChart>
             </div>
           </div>
-          
         </div>
       </div>
     </div>

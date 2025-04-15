@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Car as CarIcon, User, BarChart2, Settings } from 'lucide-react';
+import { Car as CarIcon, User, BarChart2, Settings, LogOut } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { ThemeToggle } from '../../contexts/ThemeContext';
 import '../../index.css';
@@ -21,6 +21,11 @@ export const Header: React.FC = () => {
       top: window.innerHeight,
       behavior: 'smooth'
     });
+  };
+
+  const handleSignOut = () => {
+    localStorage.removeItem('user');
+    window.location.reload();
   };
 
   return (
@@ -59,15 +64,24 @@ export const Header: React.FC = () => {
             <span>Statistics</span>
           </Link>
           {user && (
-            <Link
-              to="/admin"
-              className={`flex items-center gap-2 px-4 py-2 rounded-md hover:bg-[#11355baf] dark:hover:bg-[#11355baf] transition-colors text-black dark:text-[#eff1f3d7] ${
-                location.pathname === '/admin' ? 'bg-[#11355baf]' : ''
-              }`}
-            >
-              <User size={20} />
-              <span>Admin</span>
-            </Link>
+            <>
+              <Link
+                to="/admin"
+                className={`flex items-center gap-2 px-4 py-2 rounded-md hover:bg-[#11355baf] dark:hover:bg-[#11355baf] transition-colors text-black dark:text-[#eff1f3d7] ${
+                  location.pathname === '/admin' ? 'bg-[#11355baf]' : ''
+                }`}
+              >
+                <User size={20} />
+                <span>Admin</span>
+              </Link>
+              <button
+                onClick={handleSignOut}
+                className="flex items-center justify-center p-2 rounded-md hover:bg-red-500/20 transition-colors text-red-600 dark:text-red-400"
+                title="Sign Out"
+              >
+                <LogOut size={20} />
+              </button>
+            </>
           )}
           {!user && (
             <Link

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Plus, X } from 'lucide-react';
 import type { Car } from '../types';
-import { useCarStore } from '../data/cars';
+import { useCarStore } from '../data/Cars';
 
 export const AddCar: React.FC = () => {
   const navigate = useNavigate();
@@ -22,7 +22,10 @@ export const AddCar: React.FC = () => {
         ...car as Omit<Car, 'id'>,
         features
       });
-      navigate('/admin');
+      alert('Car added successfully!');
+      navigate('/');
+    } else {
+      alert('Please fill in all required fields');
     }
   };
 

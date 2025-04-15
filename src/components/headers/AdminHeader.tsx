@@ -1,11 +1,12 @@
 import React, { useRef } from 'react';
-import { Car as CarIcon, User, BarChart2, Settings } from 'lucide-react';
-import { Link, useLocation } from 'react-router-dom';
+import { Car as CarIcon, User, BarChart2, Settings, LogOut } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ThemeToggle } from '../../contexts/ThemeContext';
 import '../../index.css';
 
 export const AdminHeader: React.FC = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const user = localStorage.getItem('user');
 
   const formRef = useRef<HTMLDivElement>(null);
@@ -22,6 +23,12 @@ export const AdminHeader: React.FC = () => {
       behavior: 'smooth'
     });
   };
+
+  const handleSignOut = () => {
+    localStorage.removeItem('user');
+    navigate('/');
+  };
+
   return (
     <>
       <nav className="fixed w-full top-0 z-50 px-4 py-4 flex justify-between items-center bg-[rgba(255,255,255,0.568)] dark:bg-black/40 backdrop-blur-sm">
@@ -68,6 +75,13 @@ export const AdminHeader: React.FC = () => {
                 <User size={20} />
                 <span>Admin</span>
               </Link>
+              <button
+                onClick={handleSignOut}
+                className="flex items-center justify-center p-2 rounded-md hover:bg-red-500/20 transition-colors text-red-600 dark:text-red-400"
+                title="Sign Out"
+              >
+                <LogOut size={20} />
+              </button>
             </>
           ) : (
             <Link
@@ -79,12 +93,11 @@ export const AdminHeader: React.FC = () => {
               <span>Register/Login</span>
             </Link>
           )}
-          
         </div>
         
         <div className="ml-4 border-l border-blue-500 dark:border-blue-700 pl-4">
-            <ThemeToggle />
-          </div>
+          <ThemeToggle />
+        </div>
       </nav>
 
       <header className="mt-[70px] bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-800 dark:to-blue-900 text-white import-index min-h-screen">

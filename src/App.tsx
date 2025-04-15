@@ -14,6 +14,9 @@ import { ServiceDetails } from './pages/ServiceDetails';
 import { ServicesHeader } from './components/headers/ServiceHeader';
 import { StatisticsHeader } from './components/headers/StatisticsHeader';
 import { AdminHeader } from './components/headers/AdminHeader';
+import { AddService } from './pages/AddService';
+import { Login } from './pages/Login';
+
 interface ProtectedRouteProps {
   children: React.ReactNode;
 }
@@ -44,6 +47,7 @@ function App() {
             />
             <Route path="/car/:id" element={<CarDetails />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
             
             <Route
               path="/admin"
@@ -59,6 +63,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <AddCar />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/add-service"
+              element={
+                <ProtectedRoute>
+                  <AddService />
                 </ProtectedRoute>
               }
             />

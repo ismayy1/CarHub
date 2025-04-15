@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { ArrowRight, CheckCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle, LogOut } from 'lucide-react';
 
 import { Car as CarIcon, User, BarChart2, Settings } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
@@ -87,10 +87,10 @@ export const ServicesHeader: React.FC = () => {
                 </RouterLink>
                 <button
                   onClick={handleSignOut}
-                  className="flex items-center gap-2 px-4 py-2 rounded-md hover:bg-red-500/20 transition-colors text-red-600 dark:text-red-400"
+                  className="flex items-center justify-center p-2 rounded-md hover:bg-red-500/20 transition-colors text-red-600 dark:text-red-400"
+                  title="Sign Out"
                 >
-                  <User size={20} />
-                  <span>Sign Out</span>
+                  <LogOut size={20} />
                 </button>
               </>
             )}
