@@ -1,6 +1,6 @@
 import { Car } from '../types';
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { persist, createJSONStorage } from 'zustand/middleware';
 
 interface CarStore {
   cars: Car[];
@@ -88,7 +88,7 @@ export const useCarStore = create<CarStore>()(
     }),
     {
       name: 'car-storage',
-      storage: localStorage,
+      storage: createJSONStorage(() => localStorage),
     }
   )
 );

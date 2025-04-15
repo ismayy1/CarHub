@@ -7,17 +7,9 @@ import { useTheme } from '../contexts/ThemeContext';
 import type { Car } from '../types';
 
 interface EditCarModalProps {
-  car: {
-    id: string;
-    name: string;
-    model: string;
-    year: number;
-    price: number;
-    image: string;
-    description: string;
-  };
+  car: Car;
   onClose: () => void;
-  onSave: (car: any) => void;
+  onSave: (car: Car) => void;
 }
 
 interface EditServiceModalProps {
@@ -49,11 +41,11 @@ const EditCarModal = ({ car, onClose, onSave }: EditCarModalProps) => {
         <form onSubmit={handleSubmit}>
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Make</label>
               <input
                 type="text"
-                value={editedCar.name}
-                onChange={(e) => setEditedCar({ ...editedCar, name: e.target.value })}
+                value={editedCar.make}
+                onChange={(e) => setEditedCar({ ...editedCar, make: e.target.value })}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                 required
               />
@@ -92,8 +84,8 @@ const EditCarModal = ({ car, onClose, onSave }: EditCarModalProps) => {
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Image URL</label>
               <input
                 type="text"
-                value={editedCar.image}
-                onChange={(e) => setEditedCar({ ...editedCar, image: e.target.value })}
+                value={editedCar.imageUrl}
+                onChange={(e) => setEditedCar({ ...editedCar, imageUrl: e.target.value })}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                 required
               />
@@ -101,7 +93,7 @@ const EditCarModal = ({ car, onClose, onSave }: EditCarModalProps) => {
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Description</label>
               <textarea
-                value={editedCar.description}
+                value={editedCar.description || ''}
                 onChange={(e) => setEditedCar({ ...editedCar, description: e.target.value })}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                 rows={3}
@@ -304,6 +296,9 @@ export const Admin: React.FC = () => {
                     Price
                   </th>
                   <th className={`px-6 py-3 text-left text-xs font-medium ${isDarkMode ? 'text-gray-300' : 'text-gray-500'} uppercase tracking-wider`}>
+                    Mileage
+                  </th>
+                  <th className={`px-6 py-3 text-left text-xs font-medium ${isDarkMode ? 'text-gray-300' : 'text-gray-500'} uppercase tracking-wider`}>
                     Condition
                   </th>
                   <th className={`px-6 py-3 text-left text-xs font-medium ${isDarkMode ? 'text-gray-300' : 'text-gray-500'} uppercase tracking-wider`}>
@@ -335,6 +330,9 @@ export const Admin: React.FC = () => {
                     </td>
                     <td className={`px-6 py-4 whitespace-nowrap text-sm ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
                       ${car.price.toLocaleString()}
+                    </td>
+                    <td className={`px-6 py-4 whitespace-nowrap text-sm ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+                      {car.mileage.toLocaleString()} km
                     </td>
                     <td className={`px-6 py-4 whitespace-nowrap text-sm ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
                       {car.condition}
@@ -390,8 +388,8 @@ export const Admin: React.FC = () => {
                 {services.map((service) => (
                   <tr key={service.id}>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm font-medium text-gray-900">{service.name}</div>
-                      <div className="text-sm text-gray-500">{service.description}</div>
+                      <div className={`text-sm font-medium ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{service.name}</div>
+                      <div className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>{service.description}</div>
                     </td>
                     <td className={`px-6 py-4 whitespace-nowrap text-sm ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
                       {service.category}
